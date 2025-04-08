@@ -1,4 +1,5 @@
 import 'package:firebase_sample/view/addstudent.dart';
+import 'package:firebase_sample/view/profile.dart';
 import 'package:firebase_sample/viewmodel/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +36,8 @@ Navigator.push(context, MaterialPageRoute(builder: (context)=> Addstudent()));
             ),),
             subtitle: Text(data.age),
             trailing: IconButton(onPressed: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Addstudent()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Profile(address: data.address, age: data.age, clas: data.studentClass, name: data.name,id: docid!,)));
+              
             }, icon: Icon(Icons.forward)),
           );
         }
