@@ -1,4 +1,5 @@
-import 'dart:nativewrappers/_internal/vm/lib/developer.dart';
+import 'dart:developer';
+
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_sample/model/model.dart';
@@ -40,7 +41,9 @@ class StudentService {
       await fireBaseData.doc(id).delete();
       log('successfully deleted student id :$id ');
     } on FirebaseException catch (e) {
-      log('failed to delete student : $e');
+      
+      throw Exception('error : $e');
+
     }
   }
 

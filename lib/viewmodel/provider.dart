@@ -15,7 +15,7 @@ class StudentProvider extends ChangeNotifier{
 
   void addData()async{
     try {
-      studentService.addStudent(studentModel(address: addresscontroller.text, name: namecontroller.text, studentClass: classcontroller.text));
+      studentService.addStudent(studentModel(address: addresscontroller.text, name: namecontroller.text, studentClass: classcontroller.text,age: agecontroller.text));
     } catch (e) {
       log('add student in provider failed : $e');
 
