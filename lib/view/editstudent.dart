@@ -1,5 +1,6 @@
 
 import 'package:firebase_sample/model/model.dart';
+import 'package:firebase_sample/view/home.dart';
 import 'package:firebase_sample/viewmodel/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -105,7 +106,7 @@ super.initState();
           ElevatedButton(onPressed: (){
             value.updateStudent(StudentModel(address: addresscontroller.text, name: namecontroller.text, studentClass:classcontroller.text, age: agecontroller.text),widget.id);
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('data updated successfully')));
-            Navigator.pop(context);
+            Navigator.push(context,MaterialPageRoute(builder: (context)=> Home()));
           }, child: Text('submit'),),
         
         )

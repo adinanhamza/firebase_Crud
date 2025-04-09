@@ -17,7 +17,11 @@ Navigator.push(context, MaterialPageRoute(builder: (context)=> Addstudent()));
       child: Icon(Icons.add),
       
       ),
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('FireBase Details'),
+        centerTitle: true,
+        
+      ),
       body: Column(
         children: [ 
           Expanded(child: Consumer<StudentProvider>(

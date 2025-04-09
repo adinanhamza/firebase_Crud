@@ -32,7 +32,7 @@ class StudentService {
   Future<void> updateStudent(StudentModel updatedStudent, String id) async {
     try {
       await fireBaseData.doc(id).update(updatedStudent.toDataBase());
-      log('update student data : ${updatedStudent.id}');
+      log('update student data : $id');
     } catch (e) {
       log('failed to update student : $e');
     }
