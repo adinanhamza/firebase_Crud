@@ -38,13 +38,13 @@ class StudentProvider extends ChangeNotifier{
   }
 
   void updateStudent(studentModel updatedStudent,String id)async{
-studentService.updateStudent(updatedStudent, id);
+await studentService.updateStudent(updatedStudent, id);
 getData();
 notifyListeners();
   }
 
-  void deleteStudent(String id)async{
-    studentService.deleteStudent(id);
+Future  <void> deleteStudent(String id)async{
+   await studentService.deleteStudent(id);
     getData();
     notifyListeners();
   }

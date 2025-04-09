@@ -20,7 +20,9 @@ class StudentService {
   Future<List<studentModel>> getStudentData()async{
     try {
       final QuerySnapshot snapshot = await fireBaseData.get();
+      // log('id : $doc')
       return snapshot.docs.map((doc)=> studentModel.fromDataBase(doc.data() as Map<String,dynamic>, doc.id)).toList();
+      
     } catch (e) {
       log('failed to fetch student data  : $e' );
       throw Exception('error fetching data');
@@ -38,6 +40,7 @@ class StudentService {
 
   Future<void> deleteStudent(String id) async {
     try {
+      log('id $id');
       await fireBaseData.doc(id).delete();
       log('successfully deleted student id :$id ');
     } on FirebaseException catch (e) {
@@ -45,6 +48,8 @@ class StudentService {
       throw Exception('error : $e');
 
     }
+    
+    
   }
 
 

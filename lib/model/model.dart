@@ -20,7 +20,7 @@ class studentModel{
 
   factory studentModel.fromDataBase(Map<String,dynamic>json,String id){
     return studentModel(
-      id: json['id'],
+      id: id,
       name: json['name'] ?? '',
       address: json['address'] ?? '',
       studentClass: json['studentClass'] ?? '',

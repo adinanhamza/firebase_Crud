@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<StudentProvider>(context).getData();
+    Provider.of<StudentProvider>(context,listen: false).getData();
     return SafeArea(child: Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: (){
 Navigator.push(context, MaterialPageRoute(builder: (context)=> Addstudent()));
@@ -18,32 +18,44 @@ Navigator.push(context, MaterialPageRoute(builder: (context)=> Addstudent()));
       
       ),
       appBar: AppBar(),
-      body: Expanded(child: Consumer<StudentProvider>(
-        builder: (context, value, child) => 
-       ListView.builder(
-          
-          itemCount:value.studentList.length,
-          itemBuilder: 
-        
-        (context, index) {
-          final data = value.studentList[index];
-          final docid = data.id;
-          return ListTile(
-            tileColor: Colors.grey,
-
-            title: Text(data.name,style: TextStyle(
+      body: Column(
+        children: [ 
+          Expanded(child: Consumer<StudentProvider>(
+          builder: (context, value, child) => 
+         ListView.separated(
+          separatorBuilder: (context, index) {
+            return Divider(height: 10,);
+          },
             
-            ),),
-            subtitle: Text(data.age),
-            trailing: IconButton(onPressed: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Profile(address: data.address, age: data.age, clas: data.studentClass, name: data.name,id: docid!,)));
-              
-            }, icon: Icon(Icons.forward)),
-          );
-        }
+            itemCount:value.studentList.length,
+            itemBuilder: 
+          
+          (context, index) {
+            final data = value.studentList[index];
+            final docid = data.id;
+            return ListTile(
+              tileColor: Colors.blueGrey[100],
         
-        ),
-      )),
+              title: Text(data.name,style: TextStyle(
+              
+              ),),
+              subtitle: Text(data.age),
+              trailing: IconButton(onPressed: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Profile(address: data.address, age: data.age, clas: data.studentClass, name: data.name,id:docid??'no',)));
+                
+              }, icon: Icon(Icons.forward)),
+            
+            );
+          
+          }
+          
+          ),
+          
+        )),
+        SizedBox(height: 40,),
+
+        ]
+      ),
     ));
   }
 }
