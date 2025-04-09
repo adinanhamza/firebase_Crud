@@ -10,12 +10,12 @@ class StudentProvider extends ChangeNotifier{
   TextEditingController classcontroller =  TextEditingController();
   TextEditingController addresscontroller = TextEditingController();
   StudentService studentService = StudentService();
-  List<studentModel> studentList = [];
+  List<StudentModel> studentList = [];
 
 
   void addData()async{
     try {
-      studentService.addStudent(studentModel(address: addresscontroller.text, name: namecontroller.text, studentClass: classcontroller.text,age: agecontroller.text));
+      studentService.addStudent(StudentModel(address: addresscontroller.text, name: namecontroller.text, studentClass: classcontroller.text,age: agecontroller.text));
     } catch (e) {
       log('add student in provider failed : $e');
 
@@ -37,7 +37,7 @@ class StudentProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-  void updateStudent(studentModel updatedStudent,String id)async{
+  void updateStudent(StudentModel updatedStudent,String id)async{
 await studentService.updateStudent(updatedStudent, id);
 getData();
 notifyListeners();

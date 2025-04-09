@@ -8,7 +8,7 @@ class StudentService {
   final CollectionReference fireBaseData = FirebaseFirestore.instance
       .collection('data');
 
-  Future<void> addStudent(studentModel studentdata) async {
+  Future<void> addStudent(StudentModel studentdata) async {
     try {
       log('add data : ${studentdata.name}');
       await fireBaseData.add(studentdata.toDataBase());
@@ -17,11 +17,11 @@ class StudentService {
     }
   }
 
-  Future<List<studentModel>> getStudentData()async{
+  Future<List<StudentModel>> getStudentData()async{
     try {
       final QuerySnapshot snapshot = await fireBaseData.get();
       // log('id : $doc')
-      return snapshot.docs.map((doc)=> studentModel.fromDataBase(doc.data() as Map<String,dynamic>, doc.id)).toList();
+      return snapshot.docs.map((doc)=> StudentModel.fromDataBase(doc.data() as Map<String,dynamic>, doc.id)).toList();
       
     } catch (e) {
       log('failed to fetch student data  : $e' );
@@ -29,7 +29,7 @@ class StudentService {
     }
   }
 
-  Future<void> updateStudent(studentModel updatedStudent, String id) async {
+  Future<void> updateStudent(StudentModel updatedStudent, String id) async {
     try {
       await fireBaseData.doc(id).update(updatedStudent.toDataBase());
       log('update student data : ${updatedStudent.id}');

@@ -1,11 +1,11 @@
-class studentModel{
+class StudentModel{
   String? id;
   String name;
   String studentClass;
   String address;
   String age;
 
-  studentModel({required this.address, this.id,required this.name,required this.studentClass,required this.age});
+  StudentModel({required this.address, this.id,required this.name,required this.studentClass,required this.age});
 
   Map<String,dynamic>toDataBase(){
     return {
@@ -18,8 +18,8 @@ class studentModel{
   }
 
 
-  factory studentModel.fromDataBase(Map<String,dynamic>json,String id){
-    return studentModel(
+  factory StudentModel.fromDataBase(Map<String,dynamic>json,String id){
+    return StudentModel(
       id: id,
       name: json['name'] ?? '',
       address: json['address'] ?? '',

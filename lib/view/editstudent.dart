@@ -1,3 +1,4 @@
+
 import 'package:firebase_sample/model/model.dart';
 import 'package:firebase_sample/viewmodel/provider.dart';
 import 'package:flutter/material.dart';
@@ -102,7 +103,7 @@ super.initState();
         Consumer<StudentProvider>(
           builder: (context, value, child) => 
           ElevatedButton(onPressed: (){
-            value.updateStudent(studentModel(address: addresscontroller.text, name: namecontroller.text, studentClass:classcontroller.text, age: agecontroller.text),widget.id);
+            value.updateStudent(StudentModel(address: addresscontroller.text, name: namecontroller.text, studentClass:classcontroller.text, age: agecontroller.text),widget.id);
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('data updated successfully')));
             Navigator.pop(context);
           }, child: Text('submit'),),
