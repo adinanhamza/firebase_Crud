@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_sample/firebase_options.dart';
 import 'package:firebase_sample/view/home.dart';
 import 'package:firebase_sample/viewmodel/provider.dart';
+import 'package:firebase_sample/viewmodel/secondprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,8 +18,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => StudentProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => Secondprovider(),),
+        ChangeNotifierProvider(create: (context) => StudentProvider(),)
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Home(),

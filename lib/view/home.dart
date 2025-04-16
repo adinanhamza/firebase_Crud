@@ -1,6 +1,6 @@
 import 'package:firebase_sample/view/addstudent.dart';
 import 'package:firebase_sample/view/profile.dart';
-import 'package:firebase_sample/viewmodel/provider.dart';
+import 'package:firebase_sample/viewmodel/secondprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<StudentProvider>(context,listen: false).getData();
+    Provider.of<Secondprovider>(context,listen: false).getData();
     return SafeArea(child: Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: (){
 Navigator.push(context, MaterialPageRoute(builder: (context)=> Addstudent()));
@@ -20,11 +20,11 @@ Navigator.push(context, MaterialPageRoute(builder: (context)=> Addstudent()));
       appBar: AppBar(
         title: Text('FireBase Details'),
         centerTitle: true,
-        
+
       ),
       body: Column(
         children: [ 
-          Expanded(child: Consumer<StudentProvider>(
+          Expanded(child: Consumer<Secondprovider>(
           builder: (context, value, child) => 
          ListView.separated(
           separatorBuilder: (context, index) {

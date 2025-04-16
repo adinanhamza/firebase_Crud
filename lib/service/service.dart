@@ -1,6 +1,4 @@
 import 'dart:developer';
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_sample/model/model.dart';
 
@@ -16,6 +14,7 @@ class StudentService {
       log('failed to add student data  : $e');
     }
   }
+
 
   Future<List<StudentModel>> getStudentData()async{
     try {

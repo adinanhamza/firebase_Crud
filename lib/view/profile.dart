@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_sample/view/editstudent.dart';
 import 'package:firebase_sample/viewmodel/provider.dart';
+import 'package:firebase_sample/viewmodel/secondprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +32,7 @@ class Profile extends StatelessWidget {
           actions: [
             Row(
               children: [
-                Consumer<StudentProvider>(
+                Consumer<Secondprovider>(
                   builder:
                       (context, value, child) => IconButton(
                         onPressed: () {
@@ -52,7 +53,7 @@ class Profile extends StatelessWidget {
                         icon: Icon(Icons.edit),
                       ),
                 ),
-                Consumer<StudentProvider>(
+                Consumer<Secondprovider>(
                   builder:
                       (context, value, child) => IconButton(
                         onPressed: () {

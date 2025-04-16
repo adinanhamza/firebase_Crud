@@ -1,4 +1,5 @@
 import 'package:firebase_sample/viewmodel/provider.dart';
+import 'package:firebase_sample/viewmodel/secondprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +14,7 @@ class Addstudent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
       appBar: AppBar(),
-      body: Consumer<StudentProvider>(
+      body: Consumer<Secondprovider>(
         builder: (context, valuefield, child) => 
          Padding(
           padding: EdgeInsets.all(18),
@@ -67,7 +68,7 @@ class Addstudent extends StatelessWidget {
                   ),
               ),
               SizedBox(height: 20,),
-              Consumer<StudentProvider>(
+              Consumer<Secondprovider>(
                 builder: (context, value, child) => 
                  ElevatedButton(onPressed: (){
                   value.addData();

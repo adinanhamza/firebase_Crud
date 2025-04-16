@@ -2,6 +2,7 @@
 import 'package:firebase_sample/model/model.dart';
 import 'package:firebase_sample/view/home.dart';
 import 'package:firebase_sample/viewmodel/provider.dart';
+import 'package:firebase_sample/viewmodel/secondprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -101,7 +102,7 @@ super.initState();
           ),
         ),
         SizedBox(height: 20,),
-        Consumer<StudentProvider>(
+        Consumer<Secondprovider>(
           builder: (context, value, child) => 
           ElevatedButton(onPressed: (){
             value.updateStudent(StudentModel(address: addresscontroller.text, name: namecontroller.text, studentClass:classcontroller.text, age: agecontroller.text),widget.id);
