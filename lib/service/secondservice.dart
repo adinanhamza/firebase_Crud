@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 
 class SecondService{
 
-
-  final CollectionReference fireBaseData =  FirebaseFirestore.instance.collection('data');
+final CollectionReference fireBaseData = FirebaseFirestore.instance.collection('data');
 
   Future<void>addStudent(StudentModel student)async{
     try {
@@ -17,17 +16,17 @@ class SecondService{
     }
   }
 
-  Future<List<StudentModel>> getStudentData()async{
-    try {
-  final QuerySnapshot snapshot =  await fireBaseData.get();
-log('get student data success ${snapshot.docs.toString()}');
-  return snapshot.docs.map((doc)=> StudentModel.fromDataBase(doc.data() as Map<String,dynamic>, doc.id)).toList();
-  
-    } catch (e) {
-      log('error in get data : $e');
-      throw Exception('error in fetching data : $e');
-    }
+ Future<List<StudentModel>> getStudentData()async{
+  try {
+    final QuerySnapshot snapshot = await fireBaseData.get();
+    return snapshot.docs.map((doc)=> StudentModel.fromDataBase(doc.data() as Map<String ,dynamic>, doc.id)).toList();
+  } catch (e) {
+    throw Exception('error in get student $e');
   }
+ }
+
+
+
 
   Future<void>updateStudent(StudentModel updatedStudent,String id)async{
     try {
